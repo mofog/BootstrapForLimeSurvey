@@ -1,0 +1,21 @@
+<div class="panel panel-default {QUESTION_CLASS}" style="page-break-inside: avoid;">
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			<span class="text-danger">{QUESTION_MANDATORY}</span>
+			<span class="question-text"><span class="question-number">{QUESTION_NUMBER}</span>{QUESTION_TEXT}</span>
+		</h3>
+	</div>
+	<div class="panel-body">		
+		<div class="answer">
+			<p class="text-danger question-scenaria">{QUESTION_SCENARIO}</p>
+			<p class="text-muted question-type-help">{QUESTION_TYPE_HELP}</p>
+			{ANSWER}
+			<p class="text-danger">{QUESTION_MAN_MESSAGE}</p>
+			<p class="text-success">{QUESTION_VALID_MESSAGE}</p>
+			<p class="text-success">{QUESTION_FILE_VALID_MESSAGE}</p>
+		</div>
+		<div class="survey-question-help">
+			{QUESTIONHELP}
+		</div>
+	</div>
+</div>

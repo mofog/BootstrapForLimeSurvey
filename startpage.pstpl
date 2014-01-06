@@ -1,0 +1,38 @@
+<!--
+
+	BootstrapForLimeSurvey
+	A Responsive LimeSurvey Template Based On Bootstrap
+	(c) 2013 mofog (http://mofog.github.io/BootstrapForLimeSurvey)
+
+-->
+
+<title>{SURVEYNAME} {GROUPNAME}</title>
+<meta name="generator" content="LimeSurvey http://www.limesurvey.org" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{TEMPLATECSS}
+<link rel="stylesheet" href="{TEMPLATEURL}bootstrap/css/jquery-ui-bootstrap/jquery-ui.css">
+<link rel="stylesheet" href="{TEMPLATEURL}bootstrap/css/jquery-ui-bootstrap/jquery-ui.ie.css">
+<link rel="stylesheet" href="{TEMPLATEURL}bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="{TEMPLATEURL}bootstrap/css/bootstrap-theme.min.css">
+
+
+{TEMPLATEJS}
+<script src="{TEMPLATEURL}bootstrap/js/jquery.min.js"></script>
+<script>
+	var bfls = jQuery.noConflict(true);
+	
+	//Replace default javascript dialogs with modal html/css dialog
+	setupAlertDialog();
+	setupConfirmDialog();
+</script>
+<script src="{TEMPLATEURL}bootstrap/js/bootstrap.min.js"></script>
+
+<link rel="shortcut icon" href="{TEMPLATEURL}favicon.ico" />
+{GOOGLE_ANALYTICS_JAVASCRIPT}
+</head>
+
+<body class="lang-{SURVEYLANGUAGE} {SURVEYFORMAT}" style="display: none;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 content-col">

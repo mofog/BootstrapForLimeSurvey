@@ -1,0 +1,8 @@
+<div class="jumbotron load-dialog">
+	<h1>{LOADHEADING}</h1>
+	<p class="text-danger">{LOADERROR}</p>
+	<p>{LOADMESSAGE}</p>
+	
+	<div class="load-form">{LOADFORM}</div>
+	<p><span class="btn btn-default">{RETURNTOSURVEY}</span></p>
+</div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{SURVEYNAME}</title>
+		<meta name="generator" content="LimeSurvey http://www.limesurvey.org" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+		<link rel="stylesheet" href="{TEMPLATEURL}bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="{TEMPLATEURL}bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="{TEMPLATEURL}bootstrap/css/jquery-ui/jquery-ui.css">
+		<link rel="stylesheet" href="{TEMPLATEURL}bootstrap/css/jquery-ui/jquery.ui.progressbar.css">
+		<link rel="stylesheet" href="{TEMPLATEURL}template.css">
+
+		<script src="{TEMPLATEURL}bootstrap/js/jquery.min.js"></script>
+		<script src="{TEMPLATEURL}bootstrap/js/jquery-migrate-1.2.1.min.js"></script>
+		<script src="{TEMPLATEURL}bootstrap/js/jquery-ui/jquery-ui.min.js"></script>
+		<script src="{TEMPLATEURL}bootstrap/js/jquery-ui/jquery.ui.progressbar.min.js"></script>
+		<script src="{TEMPLATEURL}bootstrap/js/bootstrap.min.js"></script>
+		<script src="{TEMPLATEURL}template.js"></script>
+		<script src="/scripts/admin/printablesurvey.js"></script>
+
+		<link rel="shortcut icon" href="{TEMPLATEURL}favicon.ico" />
+	</head>
+	<body>
+		<div id="limesurvey" class="container" style="width: 90%;">
+			<h1>{SURVEYNAME}</h1>
+	
+			<p class="text-muted survey-description">{SURVEYDESCRIPTION}</p>
+			
+			<p class="survey-welcome">{WELCOME}</p>
+
+			<p class="x-questions">{THEREAREXQUESTIONS}</p>
+			
+			{GROUPS}
+			
+			{PRIVACY}
+			
+			<p class="submit-by">{END}</p>
+			<p class="submit-by">{SUBMIT_BY}</p>
+			<p class="submit-by">{FAX_TO}</p>
+			<p class="submit-by">{SUBMIT_TEXT}</p>
+			<p class="submit-by">{THANKS}</p>
+		</div>
+	</body>
+</html>

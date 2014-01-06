@@ -1,0 +1,10 @@
+<div class="jumbotron clearall-results">
+	<h1>{ANSWERSCLEARED}</h1>
+	<p class="buttons" style="padding-top: 20px;">
+			<span class="clearall-results-restart" >{RESTART}</span>
+	</p>
+	<p class="buttons" style="padding-top: 20px;">
+			<span class="clearall-results-close">{CLOSEWINDOW}</span>
+	</p>
+	<p style="padding-top: 20px;">{URL}</p>
+</div>

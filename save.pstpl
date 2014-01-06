@@ -1,0 +1,9 @@
+<div class="jumbotron save-dialog">
+	<h1>{SAVEHEADING}</h1>
+	<p class="text-danger">{SAVEERROR}</p>
+	<p>{SAVEMESSAGE}</p>
+	<p class="text-danger">{SAVEALERT}</p>
+	
+	<div class="save-form">{SAVEFORM}</div>
+	<p><span class="btn btn-default">{RETURNTOSURVEY}</span></p>
+</div>

@@ -1,0 +1,4 @@
+<div class="jumbotron completed-table">
+	<p>{COMPLETED}</p>
+	<p>{URL}</p>
+</div>

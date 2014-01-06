@@ -1,0 +1,40 @@
+body {
+	padding-top: 70px;
+	padding-bottom: 20px;
+}
+
+.logo {
+	padding: 30px;
+}
+
+.slider_callout {
+	height: 20px;
+	width: 100px;
+	overflow: hidden;
+	position: absolute;
+	top: -20px;
+	margin-left: -3px;
+	color: #284a6e;
+	font-size: 90%;
+	font-weight: bold;
+	text-align: left;
+}
+
+.multinum-slider {
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-left: 10px;
+}
+
+.em_value_range.good {
+	color: rgb(53, 102, 53);
+}
+
+.em_value_range.error {
+	color: rgb(185, 74, 72);
+}
+
+.dragDropTable ul.dragDropChoiceList li, .dragDropTable ol.dragDropRankList li {
+	padding-top: 10px;
+	padding-bottom: 22px;
+}

@@ -1,0 +1,15 @@
+{CHECKJAVASCRIPT}
+
+<div class="well">
+	<div class="row">
+		<div class="col-md-9">
+			<h1>{SURVEYNAME}</h1>
+			<p class="text-muted surveydescription">{SURVEYDESCRIPTION}</p>
+			<p class="welcome-text">{WELCOME}</p>
+			<p class="text-muted x-questions">{THEREAREXQUESTIONS}</p>
+		</div>
+		<div class="col-md-3">
+			<img class="logo center-block" src="{TEMPLATEURL}images/logo.png" alt="Logo Image" />
+		</div>
+	</div>
+</div>

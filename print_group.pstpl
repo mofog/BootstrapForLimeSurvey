@@ -1,0 +1,7 @@
+<div class="panel panel-default group{ODD_EVEN}" style="page-break-before: always;">
+	<div class="panel-body">
+  		<h1>{GROUPNAME}</h1>
+		<p class="group-description">{GROUPDESCRIPTION}</p>
+		{QUESTIONS}
+	</div>
+</div>

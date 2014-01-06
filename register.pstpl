@@ -1,0 +1,7 @@
+<div class="jumbotron register-dialog">
+	<p class="text-danger">{REGISTERERROR}</p>
+	<p>{REGISTERMESSAGE1}</p>
+	<p>{REGISTERMESSAGE2}</p>
+	
+	<div class="register-form">{REGISTERFORM}</div>
+</div>
