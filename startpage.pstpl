@@ -21,10 +21,6 @@
 <script src="{TEMPLATEURL}bootstrap/js/jquery.min.js"></script>
 <script>
 	var bfls = jQuery.noConflict(true);
-	
-	//Replace default javascript dialogs with modal html/css dialog
-	setupAlertDialog();
-	setupConfirmDialog();
 </script>
 <script src="{TEMPLATEURL}bootstrap/js/bootstrap.min.js"></script>
 

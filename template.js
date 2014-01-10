@@ -53,36 +53,46 @@
 })();
 
 function fixUi() {
-	tmp = bfls('#moveprevbtn').attr('value');
-	bfls('#moveprevbtn').replaceWith('<button class="submit btn btn-default navbar-btn" accesskey="p" type="button" onclick="javascript:document.limesurvey.move.value = \'moveprev\'; $(\'#limesurvey\').submit();" value="'+ tmp +'" name="move2" id="moveprevbtn" role="button" aria-disabled="false">'+ tmp +'</button>');
+	value = bfls('#moveprevbtn').text();
+	disabled = (bfls('#moveprevbtn').attr('aria-disabled')=='true')?'disabled aria-disabled="true"':'aria-disabled=false';
+	bfls('#moveprevbtn').replaceWith('<button type="submit" id="moveprevbtn" value="moveprev" name="moveprev" accesskey="p" class="submit btn btn-default navbar-btn" role="button" '+ disabled +'>'+ value +'</button>');
 	
-	tmp = bfls('#movenextbtn').attr('value');
-	bfls('#movenextbtn').replaceWith('<button class="submit btn btn-default btn-primary navbar-btn" type="submit" accesskey="n" onclick="javascript:document.limesurvey.move.value = \'movenext\';" value="'+ tmp +'" name="move2" id="movenextbtn" role="button" aria-disabled="false">'+ tmp +'</button>');
+	value = bfls('#movenextbtn').text();
+	disabled = (bfls('#movenextbtn').attr('aria-disabled')=='true')?'disabled aria-disabled="true"':'aria-disabled=false';
+	bfls('#movenextbtn').replaceWith('<button type="submit" id="movenextbtn" value="movenext" name="movenext" accesskey="n" class="submit btn btn-default btn-primary navbar-btn" role="button" '+ disabled +'>'+ value +'</button>');
 	
-	tmp = bfls('#movesubmitbtn').attr('value');
-	bfls('#movesubmitbtn').replaceWith('<button class="submit btn btn-default btn-success navbar-btn" type="submit" accesskey="l" onclick="javascript:document.limesurvey.move.value = \'movesubmit\';" value="'+ tmp +'" name="move2" id="movesubmitbtn" role="button" aria-disabled="false">'+ tmp +'</button>');
+	value = bfls('#movesubmitbtn').text();
+	disabled = (bfls('#movesubmitbtn').attr('aria-disabled')=='true')?'disabled aria-disabled="true"':'aria-disabled=false';
+	bfls('#movesubmitbtn').replaceWith('<button type="submit" id="movesubmitbtn" value="movesubmit" name="movesubmit" accesskey="l" class="submit btn btn-default btn-success navbar-btn" role="button" '+ disabled +'>'+ value +'</button>');
 	
-	tmp = bfls(':input[name="clearallbtn"]').val();
-	bfls(':input[name="clearallbtn"]').replaceWith('<input type="button" name="clearallbtn" value="'+ tmp +'" class="clearall btn btn-default navbar-btn" onclick="if (confirm(\'Are you sure you want to clear all your responses?\')) {window.open(\'/index.php/'+ bfls('#sid').val() +'/move/clearall/lang/en\', \'_self\')}" role="button" aria-disabled="false">');
+	value  = bfls('a.clearall span').text();
+	tmp2 = bfls('a.clearall').attr('href');
+	tmp3 = bfls('a.clearall').attr('title');
+	bfls('a.clearall').replaceWith('<a href="'+ tmp2 +'" class="clearall btn btn-default navbar-btn" title="'+ tmp3 +'" role="button">'+ value +'</a>');
+	bfls('a.clearall').click(function(event){
+		event.preventDefault();
+		confirm(tmp3);
+	});
 	
-	tmp = bfls(':input[name="loadall"]').val();
-	bfls(':input[name="loadall"]').replaceWith('<input type="button" name="loadall" value="'+ tmp +'" class="saveall btn btn-default navbar-btn" onclick="javascript:addHiddenField(document.getElementById(\'limesurvey\'),\'loadall\',this.value);document.getElementById(\'limesurvey\').submit();" disabled="" role="button" aria-disabled="true">');
+	value = bfls('#loadallbtn').text();
+	disabled = (bfls('#loadallbtn').attr('aria-disabled')=='true')?'disabled aria-disabled="true"':'aria-disabled=false';
+	bfls('#loadallbtn').replaceWith('<button type="submit" id="loadallbtn" value="loadall" name="loadall" class="saveall btn btn-default navbar-btn" role="button" '+ disabled +'>'+ value +'</button>');
 	
-	tmp = bfls(':input[name="saveallbtn"]').val();
-	bfls(':input[name="saveallbtn"]').replaceWith('<input type="button" name="saveallbtn" value="'+ tmp +'" class="saveall btn btn-default navbar-btn" onclick="javascript:document.limesurvey.move.value = this.value;addHiddenField(document.getElementById(\'limesurvey\'),\'saveall\',this.value);document.getElementById(\'limesurvey\').submit();" disabled="" role="button" aria-disabled="true">');
+	value = bfls('#saveallbtn').text();
+	disabled = (bfls('#saveallbtn').attr('aria-disabled')=='true')?'disabled aria-disabled="true"':'aria-disabled=false';
+	bfls('#saveallbtn').replaceWith('<button type="submit" id="saveallbtn" value="saveall" name="saveall" class="saveall btn btn-default navbar-btn" role="button" '+ disabled +'>'+ value +'</button>');
 	
 	bfls(':button').addClass('btn btn-default');
 	bfls('select').addClass('form-control');
 	bfls('textarea').addClass('form-control');
 	
-	bfls('#movesubmitbtn').addClass('btn-success navbar-btn');
 	bfls('#languagechanger').addClass('navbar-btn');
 	
 	bfls('.navbar-header.pull-left').css('padding-top', '0px');
 	bfls('.navbar-toggle').css('z-index', '9999');
 	bfls('.navbar :button').addClass('navbar-btn');
 	
-	bfls('p.error').replaceWith('<p class="text-warning">'+bfls('p.error').html()+'</p>');	
+	bfls('p.error').replaceWith('<p class="text-warning">'+bfls('p.error').html()+'</p>');
 }
 
 function setupProgressbar() {
@@ -278,7 +288,7 @@ function setupSurveylist() {
 	}
 }
 
-function setupAlertDialog() {
+(function setupAlertDialog() {
 	window.alert = function(message) {
 		console.log(message);
 		id = new Date().getTime();
@@ -302,9 +312,9 @@ function setupAlertDialog() {
 		');
 		bfls('#alertModal'+id).modal('show');
 	};
-}
+})();
 
-function setupConfirmDialog() {
+(function setupConfirmDialog() {
 	window.confirm = function(message) {
 		console.log(message);
 		id = new Date().getTime();
@@ -321,7 +331,7 @@ function setupConfirmDialog() {
 			      </div> \
 			      <div class="modal-footer"> \
 			        <button type="button" class="btn btn-default" data-dismiss="modal">&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;&nbsp;</button> \
-					<button type="button" class="btn btn-primary" onclick="'+ (bfls('input:button[name="clearallbtn"]').attr('onclick')).split('{')[1].split('}')[0] +'">&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;</button> \
+							<button type="button" class="btn btn-primary" onclick="window.location=\''+ bfls('a.clearall').attr('href') +'\';">&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;</button> \
 			      </div> \
 			    </div><!-- /.modal-content --> \
 			  </div><!-- /.modal-dialog --> \
@@ -329,4 +339,4 @@ function setupConfirmDialog() {
 		');
 		bfls('#alertModal'+id).modal('show');
 	};
-}
+})();
