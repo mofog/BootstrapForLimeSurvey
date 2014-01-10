@@ -153,12 +153,24 @@ function setupQuestionGroups() {
 function setupAnswers() {
 	bfls('.answer .tip').addClass('text-muted small');
 	bfls('.answer ul').addClass('list-unstyled');
-	bfls('.answer ul.radio-list li').addClass('pull-left');
+	
+	bfls('.answer ul').each(function(index) {
+		if (bfls('.answer ul').eq(index).children('li').length < 13) {
+			columnWidth = Math.floor(12/bfls('.answer ul').eq(index).children('li').length);
+		} else {
+			columnWidth = 12;		
+		}
+		
+		bfls('.answer ul').eq(index).children().wrapAll('<div class="row"></div>');
+		bfls('.answer ul').eq(index).children('div').children('li').wrap('<div class="col-md-'+ columnWidth +'"></div>');	
+	});
+	
 	bfls('.answer .radio-list .radio-item').each(function(index) {
 		bfls('.answer .radio-list .radio-item').eq(index).children('input').removeAttr('class');
 		bfls('.answer .radio-list .radio-item').eq(index).children('input').prependTo(bfls('.answer .radio-list .radio-item').eq(index).children('label'));
 		bfls('.answer .radio-list .radio-item').eq(index).children('label').wrap('<div class="radio" style="padding-right: 20px;"></div>')
 	});
+	
 	bfls('.answer input:text').addClass('form-control');
 	bfls('.answer table').wrap('<div class="table-responsive"></div>');
 	bfls('.answer table').addClass('table table-striped table-hover table-condensed');
