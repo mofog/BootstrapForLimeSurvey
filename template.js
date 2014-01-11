@@ -226,7 +226,7 @@ function setupAnswers() {
 			bfls('.subquestions-list li').eq(index).children('span.option').children('input').prependTo(bfls('.subquestions-list li').eq(index).children('span.option').children('label'));
 			bfls('.subquestions-list li').eq(index).children('span.option').children('label').wrap('<div class="checkbox"></div>');
 		});
-	}	
+	}
 }
 
 function setupResetForm() {

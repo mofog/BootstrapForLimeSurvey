@@ -7,23 +7,29 @@ body {
 	padding: 30px;
 }
 
+li.withslider span.input {
+	display: none;
+}
+
 .slider_callout {
-	height: 20px;
-	width: 100px;
-	overflow: hidden;
+	font-weight: bold;
 	position: absolute;
 	top: -20px;
-	margin-left: -3px;
-	color: #284a6e;
-	font-size: 90%;
-	font-weight: bold;
-	text-align: left;
+}
+
+.slider_showmin {
+	float: left;
+	padding-top: 10px;
+}
+
+.slider_showmax {
+	float: right;
+	padding-top: 10px;
 }
 
 .multinum-slider {
-	padding-top: 10px;
-	padding-bottom: 20px;
-	padding-left: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .em_value_range.good {
