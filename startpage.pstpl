@@ -28,7 +28,21 @@
 {GOOGLE_ANALYTICS_JAVASCRIPT}
 </head>
 
-<body class="lang-{SURVEYLANGUAGE} {SURVEYFORMAT}" style="display: none;">
-	<div class="container">
+<body class="lang-{SURVEYLANGUAGE} {SURVEYFORMAT}">
+	<div class="container bflsJavaScriptInfo">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">JavaScript</h3>
+		  </div>
+		  <div class="panel-body">
+				{CHECKJAVASCRIPT}
+		  </div>
+		</div>
+	</div>
+	<script>
+		bfls('.bflsJavaScriptInfo').hide();
+	</script>
+	
+	<div class="container bflsMainContent" style="display: none;">
 		<div class="row">
 			<div class="col-md-12 content-col">

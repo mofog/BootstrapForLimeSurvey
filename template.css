@@ -40,7 +40,7 @@ li.withslider span.input {
 	color: rgb(53, 102, 53);
 }
 
-.em_value_range.error {
+.em_value_range.error, .warningjs {
 	color: rgb(185, 74, 72);
 }
 

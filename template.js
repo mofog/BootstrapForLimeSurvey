@@ -44,7 +44,7 @@
 				setupSurveylist();
 	
 				//Show page after everything has been rendered
-				bfls('body').show();
+				bfls('.bflsMainContent').show();
 			});
 		} else {
 			waitForBfls();
@@ -86,7 +86,7 @@ function fixUi() {
 	bfls('select').addClass('form-control');
 	bfls('textarea').addClass('form-control');
 	
-	bfls('#languagechanger').addClass('navbar-btn');
+	bfls('.languagechanger').addClass('navbar-btn');
 	
 	bfls('.navbar-header.pull-left').css('padding-top', '0px');
 	bfls('.navbar-toggle').css('z-index', '9999');
