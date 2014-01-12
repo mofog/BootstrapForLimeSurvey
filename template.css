@@ -3,6 +3,10 @@ body {
 	padding-bottom: 20px;
 }
 
+.table>tbody>tr>th {
+	vertical-align: middle !important;
+}
+
 .logo {
 	padding: 30px;
 }

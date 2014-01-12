@@ -170,6 +170,10 @@ function setupAnswers() {
 		bfls('.answer .radio-list .radio-item').eq(index).children('input').prependTo(bfls('.answer .radio-list .radio-item').eq(index).children('label'));
 		bfls('.answer .radio-list .radio-item').eq(index).children('label').wrap('<div class="radio" style="padding-right: 20px;"></div>')
 	});
+	bfls('.answer .radio-list .radio-item div.radio label.hide').contents().filter(function(){
+		return this.nodeType == 3;
+	}).remove();
+	bfls('.answer .radio-list .radio-item div.radio label.hide input').unwrap();
 	
 	bfls('.answer input:text').addClass('form-control');
 	bfls('.answer table').wrap('<div class="table-responsive"></div>');
