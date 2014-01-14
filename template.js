@@ -45,6 +45,7 @@
 	
 				//Show page after everything has been rendered
 				bfls('.bflsMainContent').show();
+				window.scrollTo(0,1);
 			});
 		} else {
 			waitForBfls();
@@ -149,7 +150,7 @@ function setupQuestionIndex() {
 
 function setupQuestionGroups() {
 	bfls('.group :nth-child(n) span').removeAttr('style');
-	bfls('.group .panel-body br').remove();
+	//bfls('.group .panel-body br').remove();
 	
 	if (bfls('.group .question-number').html()) {
 		bfls('.group .question-number').append('. ');
