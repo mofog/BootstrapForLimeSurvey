@@ -9,15 +9,15 @@
 	<div class="panel-body">		
 		<div class="answer clearfix">
 		  <p class="question-help">{QUESTION_HELP}</p>
-			<div class="clearfix">
-				{ANSWER}
-			</div>
 			<p class="text-danger">{QUESTION_MAN_MESSAGE}</p>
 			<p class="text-success">{QUESTION_VALID_MESSAGE}</p>
 			<p class="text-success">{QUESTION_FILE_VALID_MESSAGE}</p>
-		</div>
-		<div class="survey-question-help">
-			{QUESTIONHELP}
+			<div class="answer clearfix">
+				{ANSWER}
+			</div>
+			<div class="survey-question-help">
+				{QUESTIONHELP}
+			</div>
 		</div>
 	</div>
 </div>

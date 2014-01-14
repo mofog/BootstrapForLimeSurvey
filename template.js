@@ -9,7 +9,7 @@
 (function waitForBfls(){
 	setTimeout(function(){
 		if (!(typeof bfls === 'undefined')) {
-			bfls(document).ready(function(){	
+			bfls(document).ready(function(){
 				//Fix LimeSurvey's CSS and JS
 				fixUi();
 	
@@ -45,7 +45,15 @@
 	
 				//Show page after everything has been rendered
 				bfls('.bflsMainContent').show();
-				window.scrollTo(0,1);
+				if (bfls('.errormandatory').length > 0) {
+					bfls('html, body').animate({
+						scrollTop: $(".errormandatory").parent().parent().parent().parent().offset().top - 50
+					}, 0);
+				} else {
+					bfls('html, body').animate({
+						scrollTop: 1
+					}, 0);
+				}
 			});
 		} else {
 			waitForBfls();
@@ -127,7 +135,7 @@ function setupProgressbar() {
 			} else {
 				if (n>0) updateProgressbar(--n);
 			}
-		}, 500);
+		}, 10);
 	})(4);
 }
 
@@ -162,17 +170,17 @@ function setupQuestionGroups() {
 
 function setupAnswers() {
 	bfls('.answer .tip').addClass('text-muted small');
-	bfls('.answer ul').addClass('list-unstyled');
+	bfls('.answer .answer ul').addClass('list-unstyled');
 	
-	bfls('.answer ul').each(function(index) {
-		if (bfls('.answer ul').eq(index).children('li').length < 13) {
-			columnWidth = Math.floor(12/bfls('.answer ul').eq(index).children('li').length);
+	bfls('.answer .answer ul').each(function(index) {
+		if (bfls('.answer .answer ul').eq(index).children('li').length < 13) {
+			columnWidth = Math.floor(12/bfls('.answer .answer ul').eq(index).children('li').length);
 		} else {
 			columnWidth = 12;		
 		}
 		
-		bfls('.answer ul').eq(index).children().wrapAll('<div class="row"></div>');
-		bfls('.answer ul').eq(index).children('div').children('li').wrap('<div class="col-md-'+ columnWidth +'"></div>');	
+		bfls('.answer .answer ul').eq(index).children().wrapAll('<div class="row"></div>');
+		bfls('.answer .answer ul').eq(index).children('div').children('li').wrap('<div class="col-md-'+ columnWidth +'"></div>');	
 	});
 	
 	bfls('.answer .radio-list .radio-item').each(function(index) {
@@ -191,10 +199,19 @@ function setupAnswers() {
 	bfls('.answer table thead tr td').replaceWith('<th>&nbsp;</th>');
 	bfls('.survey-question-help > img').replaceWith('<span class="glyphicon glyphicon-info-sign pull-left">&nbsp;</span>');
 	
+	bfls('.answer strong .errormandatory').unwrap();
+	bfls('.answer .errormandatory').addClass('text-danger');
+	bfls('.answer .text-danger br').remove();
+
+	/*
 	if (bfls('.answer .text-danger strong').length > 0) {
-		bfls('.answer .text-danger').append(bfls('.answer .text-danger strong span').html());
-		bfls('.answer .text-danger strong').remove();
+		bfls('.answer .text-danger strong').each(function(index){
+			// This does not work, do not uncomment without adjustment.
+			bfls('.answer .text-danger').append(bfls('.answer .text-danger strong span').html());
+			bfls('.answer .text-danger strong').remove();
+		});
 	}
+	*/
 	
 	/*
 	(function fixEmoticons(n){
