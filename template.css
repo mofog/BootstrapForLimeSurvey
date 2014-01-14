@@ -36,6 +36,10 @@ li.withslider span.input {
 	margin-bottom: 20px;
 }
 
+div.slider-labels {
+	margin-bottom: 15px;
+}
+
 .em_value_range.good {
 	color: rgb(53, 102, 53);
 }
@@ -47,4 +51,8 @@ li.withslider span.input {
 .dragDropTable ul.dragDropChoiceList li, .dragDropTable ol.dragDropRankList li {
 	padding-top: 10px;
 	padding-bottom: 22px;
+}
+
+button.ui-datepicker-trigger {
+	display: none;
 }

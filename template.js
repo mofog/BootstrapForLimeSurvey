@@ -49,7 +49,7 @@
 		} else {
 			waitForBfls();
 		}
-	}, 10);
+	}, 100);
 })();
 
 function fixUi() {
@@ -106,7 +106,7 @@ function fixUi() {
 
 function setupProgressbar() {
 	bfls('#progress-wrapper').hide();
-	(function updateProgressbar(){
+	(function updateProgressbar(n){
 		setTimeout(function(){
 			if (bfls('#progress-wrapper #progressbar').hasClass('ui-progressbar')) {
 				progressBarValue = bfls('#progress-wrapper #progressbar').attr('aria-valuenow');
@@ -124,10 +124,10 @@ function setupProgressbar() {
 					bfls('#index').css('padding-top', '40px');
 				}
 			} else {
-				updateProgressbar();
+				if (n>0) updateProgressbar(--n);
 			}
-		}, 10);
-	})();
+		}, 500);
+	})(4);
 }
 
 function setupQuestionIndex() {
@@ -195,36 +195,41 @@ function setupAnswers() {
 		bfls('.answer .text-danger strong').remove();
 	}
 	
-	(function fixEmoticons(){
+	/*
+	(function fixEmoticons(n){
 		setTimeout(function(){
 			if (bfls('.emoticon-2').length > 0) {
 				bfls('.emoticon-2').css('margin-top', '0px');
 			} else {
-				fixEmoticons();
+				if (n>0) fixEmoticons(--n);
 			}
-		}, 10);
-	})();
+		}, 500);
+	})(4);
 	
-	(function fixSlider(){
+	
+	(function fixSlider(n){
 		setTimeout(function(){
 			if (bfls('.slider-labels').length > 0) {
 				bfls('.slider-labels').css('margin-bottom', '15px');
 				bfls('.slider-labels').css('margin-left', '12px');
 			} else {
-				fixSlider();
+				if (n>0) fixSlider(--n);
 			}
-		}, 10);
-	})();
+		}, 500);
+	})(4);
 	
-	(function updateDatepicker(){
+	
+	(function updateDatepicker(n){
 		setTimeout(function(){
 			if (bfls('.ui-datepicker-trigger').length > 0) {
 				bfls('.ui-datepicker-trigger').hide();
 			} else {
-				updateDatepicker();
+				if (n>0) updateDatepicker(--n);
 			}
-		}, 10);
-	})();	
+		}, 500);
+	})(4);	
+	*/
+	
 	
 	if (bfls('.upload').length > 0) {
 		bfls('.upload').unwrap('<h2>');
@@ -323,7 +328,7 @@ function setupSurveylist() {
 			    <div class="modal-content"> \
 			      <div class="modal-header"> \
 			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> \
-			        <h4 class="modal-title">Sorry</h4> \
+			        <h4 class="modal-title">Info</h4> \
 			      </div> \
 			      <div class="modal-body"> \
 			        <p>'+ message +'</p> \
