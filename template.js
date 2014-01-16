@@ -78,9 +78,6 @@ function fixUi() {
 		value = bfls(':button[value="movesubmit"][name="move"]').eq(0).text();
 		disabled = (bfls(':button[value="movesubmit"][name="move"]').eq(0).attr('aria-disabled')=='true')?'disabled aria-disabled="true"':'aria-disabled=false';
 		bfls(':button[value="movesubmit"][name="move"]').replaceWith('<button type="submit" value="movesubmit" name="move" class="submit btn btn-default btn-success btn-block" role="button" '+ disabled +'>'+ value +'</button>');
-		bfls(':button[value="movesubmit"][name="move"]').click(function(event){
-			bfls('#movesubmitbtn').trigger('click');
-		});
 	}
 	
 	value  = bfls('a.clearall span').text();
@@ -141,18 +138,26 @@ function setupProgressbar() {
 
 function setupQuestionIndex() {
 	if (bfls('#index').length > 0) {
-		bfls('body .container .row .content-col').addClass('col-md-8');
-		bfls('body .container .row .content-col').removeClass('col-md-12');
-		bfls('body .container .row .content-col').after('<div class="col-md-4 index-col"></div>');
+		bfls('#limesurvey').unwrap();
+		bfls('#limesurvey').children().wrapAll('<div class="col-md-8 content-col"></div>');
+		bfls('#limesurvey .content-col').after('<div class="col-md-4 index-col"></div>');
 		bfls('#index').appendTo('.index-col');
 		bfls('#index h2').replaceWith('<h1>'+ bfls('#index h2').html() +'</h1>');
 		bfls('#index .container').addClass('panel-body').removeClass('container').wrap('<div class="panel panel-default"></div>');
 		bfls('#index div div.row').removeClass('row');
+		bfls('#index div div ol li.row').removeClass('row');
+		bfls('#index div div ol li').addClass('text-success');
+		bfls('#index div div ol li.missing').removeClass('text-success').addClass('text-muted');
+		bfls('#index div div ol li.current').removeClass('text-success').removeClass('text-danger').addClass('text-primary');
 		bfls('#index .hdr').append('. ');
-		bfls('#index span').addClass('text-muted');
-		bfls('#index .current span').addClass('text-primary');
-		bfls('#index .current span').next().addClass('text-primary');
+		bfls('#index span').addClass('text-success');
+		bfls('#index .current span').removeClass('text-success').addClass('text-primary');
+		bfls('#index .current span').next().removeClass('text-success').addClass('text-primary');
 		bfls('#index input').hide();
+		
+		// Prevent the user from jumping around in a survey if question index mode is set to "complete",
+		// since this appears to be buggy in LimeSurvey 2.05+.
+		bfls('#index button').remove();
 	}
 }
 
