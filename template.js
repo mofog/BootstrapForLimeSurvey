@@ -162,8 +162,9 @@ function setupQuestionIndex() {
 }
 
 function setupQuestionGroups() {
-	bfls('.group :nth-child(n) span').removeAttr('style');
 	//bfls('.group .panel-body br').remove();
+	//bfls('.group :nth-child(n) span').removeAttr('style');
+	bfls('.group :nth-child(n) span').css('font', '').css('font-family', '').css('font-variant', '').css('font-size', '').css('font-stretch', '');
 	
 	if (bfls('.group .question-number').html()) {
 		bfls('.group .question-number').append('. ');
