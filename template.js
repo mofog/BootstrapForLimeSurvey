@@ -42,6 +42,9 @@
 	
 				//Surveylist
 				setupSurveylist();
+				
+				//Error messages, e.g., survey has expired
+				setupTokenMessage();
 	
 				//Show page after everything has been rendered
 				bfls('.bflsMainContent').show();
@@ -339,6 +342,18 @@ function setupRegistrationForm() {
 function setupSurveylist() {
 	if (bfls('.survey-list-table .survey-contact').length > 0) {
 		bfls('.survey-list-table .survey-contact').html(bfls('.survey-list-table .survey-contact').html().replace('( ', '(').replace(' )', ')'));
+	}
+}
+
+function setupTokenMessage() {
+	if (bfls('p#tokenmessage').length > 0) {
+		bfls('p#tokenmessage').wrap('<div class="well"></div>');
+		bfls('p#tokenmessage span.error').replaceWith('<h1>'+ bfls('p#tokenmessage span.error').html() +'</h1>');
+		bfls('p#tokenmessage h1 + br').remove();
+		bfls('p#tokenmessage h1 + br').remove();
+		bfls('p#tokenmessage br + br').remove();
+		
+		bfls('p#tokenmessage').html(bfls('p#tokenmessage').html().replace('( ', '(').replace(' )', ')'));
 	}
 }
 
