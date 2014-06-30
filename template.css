@@ -56,3 +56,7 @@ div.slider-labels {
 button.ui-datepicker-trigger {
 	display: none;
 }
+
+.btn-default {
+	text-shadow: none !important;
+}

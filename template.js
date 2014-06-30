@@ -10,6 +10,10 @@
 	setTimeout(function(){
 		if (!(typeof bfls === 'undefined')) {
 			bfls(document).ready(function(){
+				// Setup Dialogs
+				setupAlertDialog();
+				setupConfirmDialog();
+				
 				//Fix LimeSurvey's CSS and JS
 				fixUi();
 	
@@ -83,6 +87,7 @@ function fixUi() {
 		bfls(':button[value="movesubmit"][name="move"]').replaceWith('<button type="submit" value="movesubmit" name="move" class="submit btn btn-default btn-success btn-block" role="button" '+ disabled +'>'+ value +'</button>');
 	}
 	
+	/*
 	value  = bfls('a.clearall span').text();
 	tmp2 = bfls('a.clearall').attr('href');
 	tmp3 = bfls('a.clearall').attr('title');
@@ -91,6 +96,10 @@ function fixUi() {
 		event.preventDefault();
 		confirm(tmp3);
 	});
+	*/
+	value = bfls('#clearall').text();
+	disabled = (bfls('#clearall').attr('aria-disabled')=='true')?'disabled aria-disabled="true"':'aria-disabled=false';
+	bfls('#clearall').replaceWith('<button type="submit" id="clearall" value="clearall" name="clearall" class="clearall btn btn-default navbar-btn" role="button" data-confirmedby="confirm-clearall" '+ disabled +'>'+ value +'</button>');
 	
 	value = bfls('#loadallbtn').text();
 	disabled = (bfls('#loadallbtn').attr('aria-disabled')=='true')?'disabled aria-disabled="true"':'aria-disabled=false';
@@ -357,7 +366,7 @@ function setupTokenMessage() {
 	}
 }
 
-(function setupAlertDialog() {
+function setupAlertDialog() {
 	window.alert = function(message) {
 		console.log(message);
 		id = new Date().getTime();
@@ -381,9 +390,9 @@ function setupTokenMessage() {
 		');
 		bfls('#alertModal'+id).modal('show');
 	};
-})();
+}
 
-(function setupConfirmDialog() {
+function setupConfirmDialog() {
 	window.confirm = function(message) {
 		console.log(message);
 		id = new Date().getTime();
@@ -400,7 +409,7 @@ function setupTokenMessage() {
 			      </div> \
 			      <div class="modal-footer"> \
 			        <button type="button" class="btn btn-default" data-dismiss="modal">&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;&nbsp;</button> \
-							<button type="button" class="btn btn-primary" onclick="window.location=\''+ bfls('a.clearall').attr('href') +'\';">&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;</button> \
+							<button type="button" class="btn btn-primary" onclick="window.location=\'index/sid/'+ bfls('#sid').attr('value') +'/newtest/Y\';">&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;</button> \
 			      </div> \
 			    </div><!-- /.modal-content --> \
 			  </div><!-- /.modal-dialog --> \
@@ -408,4 +417,4 @@ function setupTokenMessage() {
 		');
 		bfls('#alertModal'+id).modal('show');
 	};
-})();
+}

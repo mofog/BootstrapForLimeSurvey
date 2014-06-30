@@ -8,7 +8,7 @@
 
 <title>{SURVEYNAME} {GROUPNAME}</title>
 <meta name="generator" content="LimeSurvey http://www.limesurvey.org" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
 
 
 {TEMPLATECSS}
