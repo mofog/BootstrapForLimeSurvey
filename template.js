@@ -307,7 +307,7 @@ function setupSaveForm() {
 		fieldTmp = bfls('.save-form tr').eq(index).children('td').eq(1).html();
 		if (labelTmp.indexOf('<img') == -1 && fieldTmp) {
 			bfls('.save-form-bootstrap').append('<div class="form-group group'+ index +'"></div>');
-			bfls('.save-form-bootstrap .form-group.group'+index).append('<label for="'+ labelTmp +'">'+ labelTmp +'</label>');
+			bfls('.save-form-bootstrap .form-group.group'+index).append(labelTmp);
 			bfls('.save-form-bootstrap .form-group.group'+index).append(fieldTmp);
 		}
 	});
