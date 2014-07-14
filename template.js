@@ -324,7 +324,7 @@ function setupLoadForm() {
 		fieldTmp = bfls('.load-form tr').eq(index).children('td').eq(1).html();
 		if (labelTmp.indexOf('<img') == -1 && fieldTmp) {
 			bfls('.load-form-bootstrap').append('<div class="form-group group'+ index +'"></div>');
-			bfls('.load-form-bootstrap .form-group.group'+index).append('<label for="'+ labelTmp +'">'+ labelTmp +'</label>');
+			bfls('.load-form-bootstrap .form-group.group'+index).append(labelTmp);
 			bfls('.load-form-bootstrap .form-group.group'+index).append(fieldTmp);
 		}
 	});
@@ -341,7 +341,7 @@ function setupRegistrationForm() {
 		fieldTmp = bfls('.register-form tr').eq(index).children('td').eq(1).html();
 		if (labelTmp.indexOf('<img') == -1 && fieldTmp) {
 			bfls('.register-form-bootstrap').append('<div class="form-group group'+ index +'"></div>');
-			bfls('.register-form-bootstrap .form-group.group'+index).append('<label for="'+ labelTmp +'">'+ labelTmp +'</label>');
+			bfls('.register-form-bootstrap .form-group.group'+index).append(labelTmp);
 			bfls('.register-form-bootstrap .form-group.group'+index).append(fieldTmp);
 		}
 	});
