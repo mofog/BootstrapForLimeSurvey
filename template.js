@@ -202,9 +202,8 @@ function setupAnswers() {
 	});
 	
 	bfls('.answer .radio-list .radio-item').each(function(index) {
-		bfls('.answer .radio-list .radio-item').eq(index).children('label[for$="othertext"]').addClass("othertext");
 		bfls('.answer .radio-list .radio-item').eq(index).children('input').removeAttr('class');
-		bfls('.answer .radio-list .radio-item').eq(index).children('input').prependTo(bfls('.answer .radio-list .radio-item').eq(index).children('label[class!="othertext"]'));
+		bfls('.answer .radio-list .radio-item').eq(index).children('input').prependTo(bfls('.answer .radio-list .radio-item').eq(index).children('label:not([for$="othertext"])'));
 		bfls('.answer .radio-list .radio-item').eq(index).children('label').wrap('<div class="radio" style="padding-right: 20px;"></div>')
 	});
 	bfls('.answer .radio-list .radio-item div.radio label.hide').contents().filter(function(){
