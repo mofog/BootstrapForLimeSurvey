@@ -275,7 +275,7 @@ function setupAnswers() {
 	
 	if (bfls('.subquestions-list').length > 0) {
 		bfls('.subquestions-list li').each(function(index){
-			bfls('.subquestions-list li').eq(index).children('input').prependTo(bfls('.subquestions-list li').eq(index).children('label'));
+			bfls('.subquestions-list li').eq(index).children('input').appendTo(bfls('.subquestions-list li').eq(index).children('label'));
 			bfls('.subquestions-list li').eq(index).children('label[class!="slider-label"]').wrap('<div class="checkbox"></div>');
 			
 			bfls('.subquestions-list li').eq(index).children('span.option').children('input').prependTo(bfls('.subquestions-list li').eq(index).children('span.option').children('label'));
