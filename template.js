@@ -190,16 +190,18 @@ function setupAnswers() {
 	bfls('.answer .tip').addClass('text-muted small');
 	bfls('.answer .answer ul').addClass('list-unstyled');
 	
-	bfls('.answer .answer ul').each(function(index) {
-		if (bfls('.answer .answer ul').eq(index).children('li').length < 13) {
-			columnWidth = Math.floor(12/bfls('.answer .answer ul').eq(index).children('li').length);
-		} else {
-			columnWidth = 12;		
-		}
-		
-		bfls('.answer .answer ul').eq(index).children().wrapAll('<div class="row"></div>');
-		bfls('.answer .answer ul').eq(index).children('div').children('li').wrap('<div class="col-md-'+ columnWidth +'"></div>');	
-	});
+    bfls('.answer .answer ul').each(function(index) {
+        if (bfls(this).closest('.ranking-answers').length == 0) {
+            if (bfls('.answer .answer ul').eq(index).children('li').length < 13) {
+                columnWidth = Math.floor(12/bfls('.answer .answer ul').eq(index).children('li').length);
+            } else {
+                columnWidth = 12;
+            }
+
+            bfls('.answer .answer ul').eq(index).children().wrapAll('<div class="row"></div>');
+            bfls('.answer .answer ul').eq(index).children('div').children('li').wrap('<div class="col-md-'+ columnWidth +'"></div>');       
+        }
+    });
 	
 	bfls('.answer .radio-list .radio-item').each(function(index) {
 		bfls('.answer .radio-list .radio-item').eq(index).children('label[for$="othertext"]').addClass("othertext");
