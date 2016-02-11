@@ -14,8 +14,8 @@ Step 1: Add JS code to your question (either in the field "Question" or "Help"):
   });
 </script>
 ```
-Step 2: Set question type to "List (radio)".
-Step 3: Add the answer options, e.g.,
+Step 2: Set question type to "List (radio)".  
+Step 3: Add the answer options, e.g.,  
 
 | Code | Answer option |
 | ---- | ------------- |
@@ -38,14 +38,14 @@ Step 1: Add JS code to your question (either in the field "Question" or "Help"):
   });
 </script>
 ```
-Step 2: Set question type to "Multiple numerical input".
-Step 3: Define question as mandatory.
-Step 4: "Show advanced settings".
-Step 5: In the group "Slider", set "Use slider layout" to yes.
-Step 6: Set the "Slider minimum value" to 1, and the "Slider maximum value" to 21.
-Step 7: Set "Slider left/right text separator" to "|".
-Step 8: Edit subquestions. Add one subquestion for each NASA-TLX question, i.e. six.
-Step 9: Set each "Subquestion" accordingly, for example: "Mental Demands|Very low|Very high", and then "Save changes".
+Step 2: Set question type to "Multiple numerical input".  
+Step 3: Define question as mandatory.  
+Step 4: "Show advanced settings".  
+Step 5: In the group "Slider", set "Use slider layout" to yes.  
+Step 6: Set the "Slider minimum value" to 1, and the "Slider maximum value" to 21.  
+Step 7: Set "Slider left/right text separator" to "|".  
+Step 8: Edit subquestions. Add one subquestion for each NASA-TLX question, i.e. six.  
+Step 9: Set each "Subquestion" accordingly, for example: "Mental Demands|Very low|Very high", and then "Save changes".  
 Step 10: Done.
 
 ### Code Sample for SAM (Self-Assessment Manikin) scales
@@ -57,18 +57,18 @@ Step 1: Add JS code to your question (either in the field "Question" or "Help"):
   });
 </script>
 ```
-Step 2: Set question type to "Array".
-Step 3: Define question as mandatory.
-Step 4: Edit subquestions, but don't add any, just hit "Save changes" so that LimeSurvey is happy.
-Step 5: Edit answer options.
-  Substep 1: Click the pencil to "start the HTML editor in a popup window".
-  Substep 2: In the popup window, click on the button to add an image.
-  Substep 3: Click on "browse server".
-  Substep 4: Upload all your SAM images.
-  Substep 5: Select one of the uploaded images by double clicking.
-  Substep 6: Copy the URL of the image to your clipboard.
-  Substep 7: Hit "Cancel" in the "Image properties" window.
-  Substep 8: Close the HTML editor popup window.
+Step 2: Set question type to "Array".  
+Step 3: Define question as mandatory.  
+Step 4: Edit subquestions, but don't add any, just hit "Save changes" so that LimeSurvey is happy.  
+Step 5: Edit answer options.  
+  Substep 1: Click the pencil to "start the HTML editor in a popup window".  
+  Substep 2: In the popup window, click on the button to add an image.  
+  Substep 3: Click on "browse server".  
+  Substep 4: Upload all your SAM images.  
+  Substep 5: Select one of the uploaded images by double clicking.  
+  Substep 6: Copy the URL of the image to your clipboard.  
+  Substep 7: Hit "Cancel" in the "Image properties" window.  
+  Substep 8: Close the HTML editor popup window.  
   Substep 9: Set the "Answer option" for the first SAM image to
   ```
   <img src="(INSERT CLIPBOARD CONTENT HERE)" />
