@@ -46,7 +46,7 @@ This software is licensed under the GPL (GNU GENERAL PUBLIC LICENSE, see attache
 7. Step: Set "Slider left/right text separator" to "|".
 8. Step: Edit subquestions. Add one subquestion for each NASA-TLX question, i.e. six.
 9. Step: Set each "Subquestion" accordingly, for example: "Mental Demands|Very low|Very high", and then "Save changes".
-9. Step: Done.
+10. Step: Done.
 
 ### Code Sample for SAM (Self-Assessment Manikin) scales
 1. Step: Add JS code to your question (either in the field "Question" or "Help"):
