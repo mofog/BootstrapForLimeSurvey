@@ -2,7 +2,7 @@
 *
 *	BootstrapForLimeSurvey
 *	A Responsive LimeSurvey Template Based On Bootstrap
-*	(c) 2013 mofog (http://mofog.github.io/BootstrapForLimeSurvey)
+*	(c) 2013-2016 mofog (http://mofog.github.io/BootstrapForLimeSurvey)
 *
 */
 
@@ -503,7 +503,7 @@ function optimizeLikert() {
 }
 
 function optimizeNASATLX() {
-	bfls('.nasa-tlx .ui-slider').css('background', 'url(../upload/templates/BootstrapForLimeSurvey/images/nasa-tlx-background.png)')
+	bfls('.nasa-tlx .ui-slider').css('background', 'url('+BFLS_TEMPLATEURL+'images/nasa-tlx-background.png)')
 								.css('background-size', '100% 40px')																
 								.css('height', '40px')
 								.css('border', '0px solid black')

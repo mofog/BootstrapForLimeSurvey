@@ -2,7 +2,7 @@
 
 	BootstrapForLimeSurvey
 	A Responsive LimeSurvey Template Based On Bootstrap
-	(c) 2013 mofog (http://mofog.github.io/BootstrapForLimeSurvey)
+	(c) 2013-2016 mofog (http://mofog.github.io/BootstrapForLimeSurvey)
 
 -->
 
@@ -22,6 +22,7 @@
 <script src="{TEMPLATEURL}bootstrap/js/jquery.min.js"></script>
 <script>
 	var bfls = jQuery.noConflict(true);
+    BFLS_TEMPLATEURL = "{TEMPLATEURL}";
 </script>
 <script src="{TEMPLATEURL}bootstrap/js/bootstrap.min.js"></script>
 
