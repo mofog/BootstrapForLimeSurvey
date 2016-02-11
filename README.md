@@ -16,6 +16,7 @@ This software is licensed under the GPL (GNU GENERAL PUBLIC LICENSE, see attache
 ```
 2. Step: Set question type to "List (radio)".
 3. Step: Add the answer options, e.g.,
+
 | Code | Answer option |
 | ---- | ------------- |
 | A1   | (1) Strongly disagree |
@@ -25,6 +26,7 @@ This software is licensed under the GPL (GNU GENERAL PUBLIC LICENSE, see attache
 | A5   | (5) |
 | A6   | (6) |
 | A7   | (7) Strongly agree |
+
 4. Step: Done.
 
 ### Code Sample for NASA-TLX scales
