@@ -14,15 +14,13 @@
 			<div class="col-sm-9">
 				<div class="navbar-collapse collapse">
 					<div class="row">
-						<div class="col-sm-4">
+						<div class="col-sm-7">
 							{LANGUAGECHANGER}
-						</div>
-						<div class="col-sm-4">
-							{SAVE}
-						</div>
-						<div class="col-sm-4">
 							{CLEARALL}
 						</div>
+						<div class="col-sm-5">
+							{SAVE}
+						</div>						
 					</div>
 				</div><!--/.nav-collapse -->
 			</div>

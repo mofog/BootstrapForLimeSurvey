@@ -28,6 +28,33 @@
 	
 				//Answers
 				setupAnswers();
+				
+				//Optimize Likert Scales
+				//Add this JavaScript code to the question that contains a Likert scale:
+				//  <script type="text/javascript">	
+				//	  bfls(document).ready(function(){ 
+				//	  bfls('#question{QID}').addClass('likert');
+				//	  });
+				//  </script>
+				optimizeLikert();
+				
+				//Optimize NASA-TLY Scales
+				//Add this JavaScript code to the question that contains a NASA-TLX scale:
+				//  <script type="text/javascript">	
+				//	  bfls(document).ready(function(){ 
+				//	  bfls('#question{QID}').addClass('nasa-tlx');
+				//	  });
+				//  </script>
+				optimizeNASATLX();
+				
+				//Optimize Self-Assessment Manikin (SAM) Scales
+				//Add this JavaScript code to the question that contains a SAM scale:
+				//  <script type="text/javascript">	
+				//	  bfls(document).ready(function(){ 
+				//	  bfls('#question{QID}').addClass('sam');
+				//	  });
+				//  </script>
+				optimizeSAM();
 	
 				//Reset form
 				setupResetForm();
@@ -136,6 +163,14 @@ function setupProgressbar() {
 					bfls('.progress .progress-bar').append('<span>'+ progressBarValue +'%</span>');
 				}
 				
+        function update() {
+          bfls('body').css('padding-top', bfls('div.navbar').height() + 20);
+        }
+        bfls(window).resize(function () {
+          update();
+        });      
+        update();  
+        
 				bfls('.progress').show();
 				
 				if (bfls('#index').length > 0) {
@@ -169,7 +204,7 @@ function setupQuestionIndex() {
 		
 		// Prevent the user from jumping around in a survey if question index mode is set to "complete",
 		// since this appears to be buggy in LimeSurvey 2.05+.
-		bfls('#index button').remove();
+		// bfls('#index button').remove();
 	}
 }
 
@@ -196,6 +231,10 @@ function setupAnswers() {
                 columnWidth = Math.floor(12/bfls('.answer .answer ul').eq(index).children('li').length);
             } else {
                 columnWidth = 12;
+            }
+            
+            if (bfls('.answer .answer ul').hasClass('slider-list')) {
+              columnWidth = 12;
             }
 
             bfls('.answer .answer ul').eq(index).children().wrapAll('<div class="row"></div>');
@@ -284,6 +323,16 @@ function setupAnswers() {
 			bfls('.subquestions-list li').eq(index).children('span.option').children('label').wrap('<div class="checkbox"></div>');
 		});
 	}
+   
+  bfls('.answer ul.slider-list li').each(function(index){
+    if (bfls('.answer ul.slider-list li').eq(index).children('.slider-label').length > 0) {
+      bfls('.answer ul.slider-list li').eq(index).children('div.multinum-slider').wrap('<div class="row multinum-slider"><div class="col-xs-8"></div></div>');
+      bfls('.answer ul.slider-list li').eq(index).children('.row.multinum-slider').prepend(bfls('.answer ul.slider-list li').eq(index).children('.slider_lefttext'));
+      bfls('.answer ul.slider-list li').eq(index).children('.row.multinum-slider').children('.slider_lefttext').wrap('<div class="col-xs-2" style="padding-top: 15px; text-align: right;"></div>');                                                     
+      bfls('.answer ul.slider-list li').eq(index).children('.row.multinum-slider').append(bfls('.answer ul.slider-list li').eq(index).children('.slider_righttext'));
+      bfls('.answer ul.slider-list li').eq(index).children('.row.multinum-slider').children('.slider_righttext').wrap('<div class="col-xs-2" style="padding-top: 15px; text-align: left;"></div>');      
+    }
+  }); 
 }
 
 function setupResetForm() {
@@ -421,3 +470,68 @@ function setupConfirmDialog() {
 		bfls('#alertModal'+id).modal('show');
 	};
 }
+
+function optimizeLikert() {
+  function enable() {
+    bfls('.likert div.radio').css('text-align', 'center');
+    bfls('.likert input[type="radio"]').css('display', 'block').css('margin', '').css('margin', 'auto').css('float', 'none');
+  }
+  
+  function disable() {
+    bfls('.likert div.radio').css('text-align', 'left');
+    bfls('.likert input[type="radio"]').css('display', 'inline').css('margin', '').css('margin-left', '-20px').css('float', 'left');
+  }
+  
+  function update() {
+    if(isBreakpoint('sm') || isBreakpoint('xs')) {
+      disable();
+    } else {
+      enable();
+    }
+  }
+  
+  function isBreakpoint( alias ) {
+    return bfls('.device-' + alias).is(':visible');
+  }
+  
+  bfls(window).resize(function () {
+    update();
+  });
+  
+  bfls('body').append('<div class="device-xs visible-xs"></div><div class="device-sm visible-sm"></div><div class="device-md visible-md"></div><div class="device-lg visible-lg"></div>');
+  update();  
+}
+
+function optimizeNASATLX() {
+	bfls('.nasa-tlx .ui-slider').css('background', 'url(../upload/templates/BootstrapForLimeSurvey/images/nasa-tlx-background.png)')
+								.css('background-size', '100% 40px')																
+								.css('height', '40px')
+								.css('border', '0px solid black')
+								.css('top', '-20px');
+	bfls('.nasa-tlx .ui-slider .ui-slider-handle').css('height', '40px')
+												  .css('top', '0px')
+												  .css('border', '0px solid black')
+												  .css('background', 'red');
+	bfls('.nasa-tlx .ui-slider .slider-callout').css('visibility', 'hidden');
+}
+
+function optimizeSAM() {
+	bfls('.sam colgroup').remove();
+	bfls('.sam thead').remove();
+	bfls('.sam th.answertext').remove();
+	bfls('.sam table').removeClass('table-striped')
+					  .removeClass('table-hover');
+	bfls('.sam table td').css('border', '0px solid black');
+	bfls('.sam thead img').remove();	
+	bfls('.sam tbody div.radio').css('text-align', 'center');
+	bfls('.sam tbody div.radio').each(function(index) {
+		bfls('.sam tbody div.radio').eq(index).children('input').insertAfter(bfls('.sam tbody div.radio').eq(index).children('img'));
+	});
+	bfls('.sam tbody div.radio img').css('padding-bottom', '10px')
+									.css('width', '100%') //http://stackoverflow.com/questions/18846744/responsive-images-in-tables-bootstrap-3
+									.addClass('img-responsive');
+	bfls('.sam tbody input[type="radio"]').css('float', 'none')
+										  .css('display', 'block')
+										  .css('margin', 'auto');
+}
+
