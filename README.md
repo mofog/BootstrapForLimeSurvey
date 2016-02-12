@@ -2,8 +2,22 @@
 ## A Responsive LimeSurvey Template Based On Bootstrap
 
 (c) 2013-2016 mofog (http://mofog.github.io/BootstrapForLimeSurvey)
-This is a survey template for LimeSurvey that has been verified on Version 2.50+ Build 160210.
+This is a survey template for LimeSurvey that has been verified on Version 2.06+ Build 160129.
 This software is licensed under the GPL (GNU GENERAL PUBLIC LICENSE, see attached file).
+
+### Code Sample for Semantic Differentials
+Step 1: Add JS code to your question (either in the field "Question" or "Help"):
+```
+<script type="text/javascript">	
+  bfls(document).ready(function(){ 
+   bfls('#question{QID}').addClass('semanticDifferential');
+  });
+</script>
+```
+Step 2: Set question type to "Array".  
+Step 3: Add the answer options, e.g., 5 or 7, but leave the texts blank.
+Step 4: Add subquestions according to your needs, e.g., "confusing|clearly structured".
+Step 5: Done.
 
 ### Code Sample for Likert scales
 Step 1: Add JS code to your question (either in the field "Question" or "Help"):

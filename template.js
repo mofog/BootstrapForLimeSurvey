@@ -29,6 +29,15 @@
 				//Answers
 				setupAnswers();
 				
+				//Optimize one line semantic differentials
+				//Add this JavaScript code to the question that contains a semantic differential:
+				//  <script type="text/javascript">	
+				//	  bfls(document).ready(function(){ 
+				//	  bfls('#question{QID}').addClass('semanticDifferential');
+				//	  });
+				//  </script>
+				optimizeSemanticDifferential();
+				
 				//Optimize Likert Scales
 				//Add this JavaScript code to the question that contains a Likert scale:
 				//  <script type="text/javascript">	
@@ -238,7 +247,7 @@ function setupAnswers() {
             }
 
             bfls('.answer .answer ul').eq(index).children().wrapAll('<div class="row"></div>');
-            bfls('.answer .answer ul').eq(index).children('div').children('li').wrap('<div class="col-md-'+ columnWidth +'"></div>');       
+            bfls('.answer .answer ul').eq(index).find('div li').wrap('<div class="col-md-'+ columnWidth +'"></div>');       
         }
     });
 	
@@ -319,8 +328,8 @@ function setupAnswers() {
 			bfls('.subquestions-list li').eq(index).children('input').appendTo(bfls('.subquestions-list li').eq(index).children('label'));
 			bfls('.subquestions-list li').eq(index).children('label[class!="slider-label"]').wrap('<div class="checkbox"></div>');
 			
-			bfls('.subquestions-list li').eq(index).children('span.option').children('input').prependTo(bfls('.subquestions-list li').eq(index).children('span.option').children('label'));
-			bfls('.subquestions-list li').eq(index).children('span.option').children('label').wrap('<div class="checkbox"></div>');
+			bfls('.subquestions-list li').eq(index).find('span.option input').prependTo(bfls('.subquestions-list li').eq(index).children('span.option').children('label'));
+			bfls('.subquestions-list li').eq(index).find('span.option label').wrap('<div class="checkbox"></div>');
 		});
 	}
    
@@ -328,9 +337,9 @@ function setupAnswers() {
     if (bfls('.answer ul.slider-list li').eq(index).children('.slider-label').length > 0) {
       bfls('.answer ul.slider-list li').eq(index).children('div.multinum-slider').wrap('<div class="row multinum-slider"><div class="col-xs-8"></div></div>');
       bfls('.answer ul.slider-list li').eq(index).children('.row.multinum-slider').prepend(bfls('.answer ul.slider-list li').eq(index).children('.slider_lefttext'));
-      bfls('.answer ul.slider-list li').eq(index).children('.row.multinum-slider').children('.slider_lefttext').wrap('<div class="col-xs-2" style="padding-top: 15px; text-align: right;"></div>');                                                     
+      bfls('.answer ul.slider-list li').eq(index).find('.row.multinum-slider .slider_lefttext').wrap('<div class="col-xs-2" style="padding-top: 15px; text-align: right;"></div>');                                                     
       bfls('.answer ul.slider-list li').eq(index).children('.row.multinum-slider').append(bfls('.answer ul.slider-list li').eq(index).children('.slider_righttext'));
-      bfls('.answer ul.slider-list li').eq(index).children('.row.multinum-slider').children('.slider_righttext').wrap('<div class="col-xs-2" style="padding-top: 15px; text-align: left;"></div>');      
+      bfls('.answer ul.slider-list li').eq(index).find('.row.multinum-slider .slider_righttext').wrap('<div class="col-xs-2" style="padding-top: 15px; text-align: left;"></div>');      
     }
   }); 
 }
@@ -471,35 +480,52 @@ function setupConfirmDialog() {
 	};
 }
 
+function optimizeSemanticDifferential() {
+	bfls('.semanticDifferential table').removeClass('table-hover');
+	bfls('.semanticDifferential table').each(function(index) {
+		if (bfls('.semanticDifferential table').eq(index).find('tbody tr').length == 1) {
+			bfls('.semanticDifferential table').eq(index).removeClass('table-striped');
+		}	
+	});	
+	bfls('.semanticDifferential table thead th').remove();
+	bfls('.semanticDifferential table th').css('border', '0px solid black');
+	bfls('.semanticDifferential table td').css('border', '0px solid black')
+										  .css('vertical-align', 'middle');
+	bfls('.semanticDifferential div.radio').css('text-align', 'center')
+										   .css('padding-left', '0px')
+										   .css('padding-right', '0px');										   
+	bfls('.semanticDifferential input[type="radio"]').css('display', 'block').css('margin', '').css('margin', 'auto').css('float', 'none');
+}
+
 function optimizeLikert() {
-  function enable() {
-    bfls('.likert div.radio').css('text-align', 'center');
-    bfls('.likert input[type="radio"]').css('display', 'block').css('margin', '').css('margin', 'auto').css('float', 'none');
-  }
-  
-  function disable() {
-    bfls('.likert div.radio').css('text-align', 'left');
-    bfls('.likert input[type="radio"]').css('display', 'inline').css('margin', '').css('margin-left', '-20px').css('float', 'left');
-  }
-  
-  function update() {
-    if(isBreakpoint('sm') || isBreakpoint('xs')) {
-      disable();
-    } else {
-      enable();
-    }
-  }
-  
-  function isBreakpoint( alias ) {
-    return bfls('.device-' + alias).is(':visible');
-  }
-  
-  bfls(window).resize(function () {
-    update();
-  });
-  
-  bfls('body').append('<div class="device-xs visible-xs"></div><div class="device-sm visible-sm"></div><div class="device-md visible-md"></div><div class="device-lg visible-lg"></div>');
-  update();  
+	function enable() {
+	bfls('.likert div.radio').css('text-align', 'center');
+	bfls('.likert input[type="radio"]').css('display', 'block').css('margin', '').css('margin', 'auto').css('float', 'none');
+	}
+
+	function disable() {
+	bfls('.likert div.radio').css('text-align', 'left');
+	bfls('.likert input[type="radio"]').css('display', 'inline').css('margin', '').css('margin-left', '-20px').css('float', 'left');
+	}
+
+	function update() {
+	if(isBreakpoint('sm') || isBreakpoint('xs')) {
+	  disable();
+	} else {
+	  enable();
+	}
+	}
+
+	function isBreakpoint( alias ) {
+	return bfls('.device-' + alias).is(':visible');
+	}
+
+	bfls(window).resize(function () {
+	update();
+	});
+
+	bfls('body').append('<div class="device-xs visible-xs"></div><div class="device-sm visible-sm"></div><div class="device-md visible-md"></div><div class="device-lg visible-lg"></div>');
+	update();
 }
 
 function optimizeNASATLX() {
