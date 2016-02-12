@@ -15,8 +15,8 @@ Step 1: Add JS code to your question (either in the field "Question" or "Help"):
 </script>
 ```
 Step 2: Set question type to "Array".  
-Step 3: Add the answer options, e.g., 5 or 7, but leave the texts blank.
-Step 4: Add subquestions according to your needs, e.g., "confusing|clearly structured".
+Step 3: Add the answer options, e.g., 5 or 7, but leave the texts blank.  
+Step 4: Add subquestions according to your needs, e.g., "confusing|clearly structured".  
 Step 5: Done.
 
 ### Code Sample for Likert scales
