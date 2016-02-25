@@ -60,3 +60,7 @@ button.ui-datepicker-trigger {
 .btn-default {
 	text-shadow: none !important;
 }
+
+div#index li {
+	cursor: pointer;
+}

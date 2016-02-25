@@ -470,7 +470,7 @@ function setupConfirmDialog() {
 			      </div> \
 			      <div class="modal-footer"> \
 			        <button type="button" class="btn btn-default" data-dismiss="modal">&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;&nbsp;</button> \
-							<button type="button" class="btn btn-primary" onclick="window.location=\'index/sid/'+ bfls('#sid').attr('value') +'/newtest/Y\';">&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;</button> \
+							<button type="button" class="btn btn-primary" onclick="window.location=\''+ bfls('#sid').attr('value') +'/newtest/Y\';">&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;&nbsp;</button> \
 			      </div> \
 			    </div><!-- /.modal-content --> \
 			  </div><!-- /.modal-dialog --> \
