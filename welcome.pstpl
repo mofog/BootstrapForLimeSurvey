@@ -9,7 +9,7 @@
 			<p class="text-muted x-questions">{THEREAREXQUESTIONS}</p>
 		</div>
 		<div class="col-md-3">
-			<img class="logo center-block" src="{TEMPLATEURL}images/logo.png" alt="Logo Image" />
+			<img class="logo center-block img-responsive" src="{TEMPLATEURL}images/logo.png" alt="Logo Image" />
 		</div>
 	</div>
 </div>

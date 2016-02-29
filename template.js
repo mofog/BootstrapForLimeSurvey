@@ -123,16 +123,6 @@ function fixUi() {
 		bfls(':button[value="movesubmit"][name="move"]').replaceWith('<button type="submit" value="movesubmit" name="move" class="submit btn btn-default btn-success btn-block" role="button" '+ disabled +'>'+ value +'</button>');
 	}
 	
-	/*
-	value  = bfls('a.clearall span').text();
-	tmp2 = bfls('a.clearall').attr('href');
-	tmp3 = bfls('a.clearall').attr('title');
-	bfls('a.clearall').replaceWith('<a href="'+ tmp2 +'" class="clearall btn btn-default navbar-btn" title="'+ tmp3 +'" role="button">'+ value +'</a>');
-	bfls('a.clearall').click(function(event){
-		event.preventDefault();
-		confirm(tmp3);
-	});
-	*/
 	value = bfls('#clearall').text();
 	disabled = (bfls('#clearall').attr('aria-disabled')=='true')?'disabled aria-disabled="true"':'aria-disabled=false';
 	bfls('#clearall').replaceWith('<button type="submit" id="clearall" value="clearall" name="clearall" class="clearall btn btn-default navbar-btn" role="button" data-confirmedby="confirm-clearall" '+ disabled +'>'+ value +'</button>');
@@ -156,6 +146,22 @@ function fixUi() {
 	bfls('.navbar :button').addClass('navbar-btn');
 	
 	bfls('p.error').replaceWith('<p class="text-warning">'+bfls('p.error').html()+'</p>');
+	
+	(function updateNavbar(n){
+		setTimeout(function(){
+			if (bfls('div.navbar').length > 0) {
+				function update() {
+					bfls('body').css('padding-top', bfls('div.navbar').height() + 20);
+				}
+				bfls(window).resize(function () {
+					update();
+				});      
+				update();
+			} else {
+				if (n>0) updateNavbar(--n);
+			}
+		}, 10);
+	})(4);
 }
 
 function setupProgressbar() {
@@ -170,15 +176,7 @@ function setupProgressbar() {
 				bfls('.progress .progress-bar span.sr-only').html(progressBarValue+'% Complete');
 				if (progressBarValue > 0) {
 					bfls('.progress .progress-bar').append('<span>'+ progressBarValue +'%</span>');
-				}
-				
-        function update() {
-          bfls('body').css('padding-top', bfls('div.navbar').height() + 20);
-        }
-        bfls(window).resize(function () {
-          update();
-        });      
-        update();  
+				}  
         
 				bfls('.progress').show();
 				
@@ -218,8 +216,6 @@ function setupQuestionIndex() {
 }
 
 function setupQuestionGroups() {
-	//bfls('.group .panel-body br').remove();
-	//bfls('.group :nth-child(n) span').removeAttr('style');
 	bfls('.group :nth-child(n) span').css('font', '').css('font-family', '').css('font-variant', '').css('font-size', '').css('font-stretch', '');
 	
 	if (bfls('.group .question-number').html()) {
@@ -236,19 +232,35 @@ function setupAnswers() {
 	
     bfls('.answer .answer ul').each(function(index) {
         if (bfls(this).closest('.ranking-answers').length == 0) {
-            if (bfls('.answer .answer ul').eq(index).children('li').length < 13) {
-                columnWidth = Math.floor(12/bfls('.answer .answer ul').eq(index).children('li').length);
+		// The following lines were contributed by pgee70 (https://github.com/mofog/BootstrapForLimeSurvey/issues/20)
+			var lis = bfls('li', this);
+			var li_count = bfls('li', this).length;
+			if (li_count < 4) {
+				columns = Math.floor(12/li_count);
+			} if (bfls('.answer .answer ul').hasClass('slider-list')) {
+				columns = 1;
             } else {
-                columnWidth = 12;
-            }
-            
-            if (bfls('.answer .answer ul').hasClass('slider-list')) {
-              columnWidth = 12;
-            }
+				columns = 3;
+			}
 
-            bfls('.answer .answer ul').eq(index).children().wrapAll('<div class="row"></div>');
-            bfls('.answer .answer ul').eq(index).find('div li').wrap('<div class="col-md-'+ columnWidth +'"></div>');       
-        }
+			var rows = [];
+			for (var i=0 ; i<Math.ceil(li_count/columns); i++) {
+				rows[i]=Array();
+				for (var j=0; j<columns; j++) {
+					rows[i][j] = lis[i * columns + j];
+				}
+			}
+			bfls('li', this).remove();
+			for (var i=0; i<rows.length; i++) {
+				if (bfls('.row-'+i, this).length == 0) {
+					bfls(this).append('<div class="row row-' + i + '"></div>');
+				}
+				for (var j=0; j<rows[i].length; j++) {
+					bfls('.row-'+i , this).append(rows[i][j]);
+				}
+			}
+			bfls('li',this).wrap('<div class="col-md-'+  Math.floor(12/columns) +'"></div>');
+		}
     });
 	
 	bfls('.answer .radio-list .radio-item').each(function(index) {
