@@ -232,16 +232,16 @@ function setupAnswers() {
 	
     bfls('.answer .answer ul').each(function(index) {
         if (bfls(this).closest('.ranking-answers').length == 0) {
-		// The following lines were contributed by pgee70 (https://github.com/mofog/BootstrapForLimeSurvey/issues/20)
+		// pgee70 contributed the following lines (https://github.com/mofog/BootstrapForLimeSurvey/issues/20)
 			var lis = bfls('li', this);
 			var li_count = bfls('li', this).length;
+			columns = 3; //default
 			if (li_count < 4) {
-				columns = Math.floor(12/li_count);
-			} if (bfls('.answer .answer ul').hasClass('slider-list')) {
+				// columns = Math.floor(12/li_count);
+				columns = li_count;
+			} else if (bfls(this).hasClass('slider-list')) {
 				columns = 1;
-            } else {
-				columns = 3;
-			}
+            }
 
 			var rows = [];
 			for (var i=0 ; i<Math.ceil(li_count/columns); i++) {
@@ -263,10 +263,10 @@ function setupAnswers() {
 		}
     });
 	
-	bfls('.answer .radio-list .radio-item').each(function(index) {
-		bfls('.answer .radio-list .radio-item').eq(index).children('label[for$="othertext"]').addClass("othertext");
-		bfls('.answer .radio-list .radio-item').eq(index).children('input').removeAttr('class');
-		bfls('.answer .radio-list .radio-item').eq(index).children('input').prependTo(bfls('.answer .radio-list .radio-item').eq(index).children('label[class!="othertext"]'));
+	bfls('.answer .radio-list .radio-item').each(function(index) {		
+		// andykirk contributed the following lines (https://github.com/mofog/BootstrapForLimeSurvey/pull/11/files)
+		bfls('.answer .radio-list .radio-item').eq(index).children('input').removeAttr('class');		
+		bfls('.answer .radio-list .radio-item').eq(index).children('input').prependTo(bfls('.answer .radio-list .radio-item').eq(index).children('label:not([for$="othertext"])'));
 		bfls('.answer .radio-list .radio-item').eq(index).children('label').wrap('<div class="radio" style="padding-right: 20px;"></div>')
 	});
 	bfls('.answer .radio-list .radio-item div.radio label.hide').contents().filter(function(){
