@@ -93,5 +93,17 @@ Step 5: Edit answer options.
   ```
   <img src="/upload/surveys/921666/images/sam-a-2.png" />
   ```
-Step 6: Done.  
+Step 6: Done.
+
+### Code Sample for numeric text input fields on iOS devices
+Step 1: Add JS code to your question (either in the field "Question" or "Help"):
+```
+<script type="text/javascript"> 
+  bfls(document).ready(function(){ 
+   bfls('#question{QID}').find('input[type="text"]').attr('type', 'tel');
+  });
+</script>
+```
+Step 2: Set question type to "Array (text)".  
+Step 3: Done.
 

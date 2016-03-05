@@ -274,7 +274,9 @@ function setupAnswers() {
 	}).remove();
 	bfls('.answer .radio-list .radio-item div.radio label.hide input').unwrap();
 	
-	bfls('.answer input:text').addClass('form-control');
+	bfls('.answer input[type="text"]').addClass('form-control');
+	bfls('.answer input[type="tel"]').addClass('form-control');
+	bfls('.answer input[type="number"]').addClass('form-control');
 	bfls('.answer table').wrap('<div class="table-responsive"></div>');
 	bfls('.answer table').addClass('table table-striped table-hover table-condensed');
 	bfls('.answer table thead tr td').replaceWith('<th>&nbsp;</th>');
