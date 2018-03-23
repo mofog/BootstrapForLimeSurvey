@@ -3,6 +3,10 @@ body {
 	padding-bottom: 20px;
 }
 
+.navbar-collapse.collapse {
+	padding-left: 0px;
+}
+
 .table>tbody>tr>th {
 	vertical-align: middle !important;
 }
@@ -67,4 +71,8 @@ div#index li {
 
 label input {
 	margin-top: 0px !important;
+}
+
+.boilerplate .glyphicon-info-sign {
+	display: none;
 }

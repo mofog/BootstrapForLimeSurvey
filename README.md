@@ -1,9 +1,22 @@
 # BootstrapForLimeSurvey
 ## A Responsive LimeSurvey Template Based On Bootstrap
 
-(c) 2013-2016 mofog (http://mofog.github.io/BootstrapForLimeSurvey)
+(c) 2013-2018 mofog (http://mofog.github.io/BootstrapForLimeSurvey)
 This is a survey template for LimeSurvey that has been verified on Version 2.06+ Build 160129.
+It is not designed for newer LimeSurvey version, e.g., 3.x.
 This software is licensed under the GPL (GNU GENERAL PUBLIC LICENSE, see attached file).
+
+### Events
+The class .bflsMainContent provides two events you can listen to: 'ready' and 'show'. The first one is fired after all changes to the DOM have been applied, but the page is not visible yet. The latter is fired after the visibility of the page has been set.
+```
+<script type="text/javascript">	
+  bfls('.bflsMainContent').on('ready', function() {
+    bfls('div.numeric-multi div.col-md-4').addClass('col-md-12');
+    bfls('div.numeric-multi div.col-md-4').removeClass('col-md-4');
+  });
+</script>
+```
+The example above changes the width of multiple numeric inputs so that one numeric input is displayed per row instead of three.
 
 ### Code Sample for Semantic Differentials
 Step 1: Add JS code to your question (either in the field "Question" or "Help"):

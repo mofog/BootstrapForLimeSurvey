@@ -2,7 +2,7 @@
 *
 *	BootstrapForLimeSurvey
 *	A Responsive LimeSurvey Template Based On Bootstrap
-*	(c) 2013-2016 mofog (http://mofog.github.io/BootstrapForLimeSurvey)
+*	(c) 2013-2018 mofog (http://mofog.github.io/BootstrapForLimeSurvey)
 *
 */
 
@@ -47,7 +47,7 @@
 				//  </script>
 				optimizeLikert();
 				
-				//Optimize NASA-TLY Scales
+				//Optimize NASA-TLX Scales
 				//Add this JavaScript code to the question that contains a NASA-TLX scale:
 				//  <script type="text/javascript">	
 				//	  bfls(document).ready(function(){ 
@@ -87,7 +87,9 @@
 				setupTokenMessage();
 	
 				//Show page after everything has been rendered
+				bfls('.bflsMainContent').trigger('ready');
 				bfls('.bflsMainContent').show();
+				bfls('.bflsMainContent').trigger('show');
 				if (bfls('.errormandatory').length > 0) {
 					bfls('html, body').animate({
 						scrollTop: $(".errormandatory").parent().parent().parent().parent().offset().top - 50
